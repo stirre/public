@@ -45,4 +45,11 @@ echo "<Directory /usr/share/phpmyadmin>
     Require valid-user
 </Directory>" >> /etc/apache2/apache2.conf
 a2ensite mysli.ehasa.org.conf
+
+  
+sed -i "s/upload_max_filesize = 800M/upload_max_filesize = 6M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/Post_max_size = 800M/Post_max_size = 18M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/upload_max_filesize = 800M/upload_max_filesize = 6M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/Post_max_size = 800M/Post_max_size = 18M/" /etc/php/7.4/fpm/php.ini
+
 service restart apache2
