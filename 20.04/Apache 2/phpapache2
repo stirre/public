@@ -1,0 +1,24 @@
+sed -i "s/ServerTokens OS/ServerTokens Prod/" /etc/apache2/conf-available/security.conf
+sed -i "s/ServerSignature On/ServerSignature Off/" /etc/apache2/conf-available/security.conf
+sed -i "s/Options Indexes FollowSymLinks/Options -Indexes -FollowSymLinks/" /etc/apache2/apache2.conf
+apt install libapache2-mod-security2 -y
+apt install libapache2-mod-evasive -y
+echo "TraceEnable off" >> /etc/apache2/apache2.conf
+sed -i "s/Timeout 300/Timeout 60/" /etc/apache2/apache2.conf
+sed -i "s/Expose_php = On/Expose_php = Off/" /etc/php/7.4/fpm/php.ini
+sed -i "s/register_globals = On/register_globals = Off/" /etc/php/7.4/fpm/php.ini
+sed -i "s/html_errors = On/html_errors = Off/" /etc/php/7.4/fpm/php.ini
+sed -i "s/track_errors = On/track_errors = Off/" /etc/php/7.4/fpm/php.ini
+sed -i "s/disable_functions = system,exec,shell_exec,php_uname,getmyuid,getmypid,leak,listen,diskfreespace,link,ignore_user_abord,dl,set_time_limit,highlight_file,source,show_source,passthru,fpaththru,virtual,posix_ctermid,posix_getcwd,posix_getegid,posix_geteuid,posix_getgid,posix_getgrgid,posix_getgrnam,posix_getgroups,posix_getlogin,posix_getpgid,posix_getpgrp,posix_getpid,posix,_getppid,posix_getpwnam,posix_getpwuid,posix_getrlimit,posix_getsid,posix_getuid,posix_isatty,posix_kill,posix_mkfifo,posix_setegid,posix_seteuid,posix_setgid,posix_setpgid,posix_setsid,posix_setuid,posix_times,posix_ttyname,posix_uname,proc_open,proc_close,proc_get_status,proc_nice,proc_terminate,phpinfo
+sed -i "s/allow_url_fopen = On/allow_url_fopen = Off/" /etc/php/7.4/fpm/php.ini
+sed -i "s/allow_url_include = On/allow_url_include = Off/" /etc/php/7.4/fpm/php.ini
+sed -i "s/file_uploads = On/file_uploads = Off/" /etc/PHP/5.6/fpm/php.ini
+sed -i "s/file_uploads = On/file_uploads = Off/" /etc/php/5.6/apache2/php.ini
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 800M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/Post_max_size = 8M/Post_max_size = 800M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 800M/" /etc/php/7.4/apache2/php.ini
+sed -i "s/Post_max_size = 8M/Post_max_size = 800M/" /etc/php/7.4/apache2/php.ini
+sed -i "s/SSLProtocol all -SSLv3/SSLProtocol all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1/" /etc/apache2/mods-available/ssl.conf
+sed -i "s/#SSLHonorCipherOrder on/SSLHonorCipherOrder on/" /etc/apache2/mods-available/ssl.conf
+
+systemctl restart apache2
