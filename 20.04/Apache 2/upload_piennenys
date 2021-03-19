@@ -1,0 +1,4 @@
+sed -i "s/upload_max_filesize = 800M/upload_max_filesize = 6M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/Post_max_size = 800M/Post_max_size = 18M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/upload_max_filesize = 800M/upload_max_filesize = 6M/" /etc/php/7.4/fpm/php.ini
+sed -i "s/Post_max_size = 800M/Post_max_size = 18M/" /etc/php/7.4/fpm/php.ini
