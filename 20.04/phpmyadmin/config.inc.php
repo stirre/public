@@ -151,3 +151,4 @@ $cfg['SaveDir'] = '';
  * You can find more configuration options in the documentation
  * in the doc/ folder or at <https://docs.phpmyadmin.net/>.
  */
+$cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';
